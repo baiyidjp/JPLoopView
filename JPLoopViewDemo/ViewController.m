@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "LoopViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)clickLoopViewBtn:(id)sender {
+    
+    [self.navigationController pushViewController:[LoopViewController new] animated:YES];
 }
 
 

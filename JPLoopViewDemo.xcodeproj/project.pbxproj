@@ -13,6 +13,16 @@
 		F5460DCE215097C3000B9C96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5460DCD215097C3000B9C96 /* Assets.xcassets */; };
 		F5460DD1215097C3000B9C96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5460DCF215097C3000B9C96 /* LaunchScreen.storyboard */; };
 		F5460DD4215097C3000B9C96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DD3215097C3000B9C96 /* main.m */; };
+		F5460DEB2150980B000B9C96 /* JPLoopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DDB2150980B000B9C96 /* JPLoopViewCell.m */; };
+		F5460DEC2150980B000B9C96 /* JPLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DDC2150980B000B9C96 /* JPLoopView.m */; };
+		F5460DED2150980B000B9C96 /* JPPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE02150980B000B9C96 /* JPPageControl.m */; };
+		F5460DEE2150980B000B9C96 /* UIImageView+JPWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE22150980B000B9C96 /* UIImageView+JPWebImage.m */; };
+		F5460DEF2150980B000B9C96 /* JPProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE52150980B000B9C96 /* JPProxy.m */; };
+		F5460DF02150980B000B9C96 /* JPTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE62150980B000B9C96 /* JPTimerManager.m */; };
+		F5460DF12150980B000B9C96 /* JPLoopViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE72150980B000B9C96 /* JPLoopViewLayout.m */; };
+		F5460DF22150980B000B9C96 /* JPLoopCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE92150980B000B9C96 /* JPLoopCellModel.m */; };
+		F5460DF52150982E000B9C96 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DF42150982E000B9C96 /* UIImage+Extension.m */; };
+		F5460DF8215098FF000B9C96 /* LoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DF7215098FF000B9C96 /* LoopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +36,26 @@
 		F5460DD0215097C3000B9C96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F5460DD2215097C3000B9C96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5460DD3215097C3000B9C96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F5460DDB2150980B000B9C96 /* JPLoopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopViewCell.m; sourceTree = "<group>"; };
+		F5460DDC2150980B000B9C96 /* JPLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopView.m; sourceTree = "<group>"; };
+		F5460DDD2150980B000B9C96 /* JPTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPTimerManager.h; sourceTree = "<group>"; };
+		F5460DDE2150980B000B9C96 /* JPProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPProxy.h; sourceTree = "<group>"; };
+		F5460DDF2150980B000B9C96 /* JPLoopViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopViewLayout.h; sourceTree = "<group>"; };
+		F5460DE02150980B000B9C96 /* JPPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPPageControl.m; sourceTree = "<group>"; };
+		F5460DE12150980B000B9C96 /* JPLoopCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopCellModel.h; sourceTree = "<group>"; };
+		F5460DE22150980B000B9C96 /* UIImageView+JPWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JPWebImage.m"; sourceTree = "<group>"; };
+		F5460DE32150980B000B9C96 /* JPLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopView.h; sourceTree = "<group>"; };
+		F5460DE42150980B000B9C96 /* JPLoopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopViewCell.h; sourceTree = "<group>"; };
+		F5460DE52150980B000B9C96 /* JPProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPProxy.m; sourceTree = "<group>"; };
+		F5460DE62150980B000B9C96 /* JPTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPTimerManager.m; sourceTree = "<group>"; };
+		F5460DE72150980B000B9C96 /* JPLoopViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopViewLayout.m; sourceTree = "<group>"; };
+		F5460DE82150980B000B9C96 /* UIImageView+JPWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JPWebImage.h"; sourceTree = "<group>"; };
+		F5460DE92150980B000B9C96 /* JPLoopCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopCellModel.m; sourceTree = "<group>"; };
+		F5460DEA2150980B000B9C96 /* JPPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPPageControl.h; sourceTree = "<group>"; };
+		F5460DF32150982E000B9C96 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		F5460DF42150982E000B9C96 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		F5460DF6215098FF000B9C96 /* LoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoopViewController.h; sourceTree = "<group>"; };
+		F5460DF7215098FF000B9C96 /* LoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoopViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +88,13 @@
 		F5460DC3215097C1000B9C96 /* JPLoopViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F5460DDA2150980B000B9C96 /* JPLoopView */,
 				F5460DC4215097C1000B9C96 /* AppDelegate.h */,
 				F5460DC5215097C1000B9C96 /* AppDelegate.m */,
 				F5460DC7215097C2000B9C96 /* ViewController.h */,
 				F5460DC8215097C2000B9C96 /* ViewController.m */,
+				F5460DF6215098FF000B9C96 /* LoopViewController.h */,
+				F5460DF7215098FF000B9C96 /* LoopViewController.m */,
 				F5460DCA215097C2000B9C96 /* Main.storyboard */,
 				F5460DCD215097C3000B9C96 /* Assets.xcassets */,
 				F5460DCF215097C3000B9C96 /* LaunchScreen.storyboard */,
@@ -69,6 +102,31 @@
 				F5460DD3215097C3000B9C96 /* main.m */,
 			);
 			path = JPLoopViewDemo;
+			sourceTree = "<group>";
+		};
+		F5460DDA2150980B000B9C96 /* JPLoopView */ = {
+			isa = PBXGroup;
+			children = (
+				F5460DE32150980B000B9C96 /* JPLoopView.h */,
+				F5460DDC2150980B000B9C96 /* JPLoopView.m */,
+				F5460DE42150980B000B9C96 /* JPLoopViewCell.h */,
+				F5460DDB2150980B000B9C96 /* JPLoopViewCell.m */,
+				F5460DDF2150980B000B9C96 /* JPLoopViewLayout.h */,
+				F5460DE72150980B000B9C96 /* JPLoopViewLayout.m */,
+				F5460DE12150980B000B9C96 /* JPLoopCellModel.h */,
+				F5460DE92150980B000B9C96 /* JPLoopCellModel.m */,
+				F5460DDD2150980B000B9C96 /* JPTimerManager.h */,
+				F5460DE62150980B000B9C96 /* JPTimerManager.m */,
+				F5460DEA2150980B000B9C96 /* JPPageControl.h */,
+				F5460DE02150980B000B9C96 /* JPPageControl.m */,
+				F5460DDE2150980B000B9C96 /* JPProxy.h */,
+				F5460DE52150980B000B9C96 /* JPProxy.m */,
+				F5460DF32150982E000B9C96 /* UIImage+Extension.h */,
+				F5460DF42150982E000B9C96 /* UIImage+Extension.m */,
+				F5460DE82150980B000B9C96 /* UIImageView+JPWebImage.h */,
+				F5460DE22150980B000B9C96 /* UIImageView+JPWebImage.m */,
+			);
+			path = JPLoopView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +199,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5460DEF2150980B000B9C96 /* JPProxy.m in Sources */,
 				F5460DC9215097C2000B9C96 /* ViewController.m in Sources */,
 				F5460DD4215097C3000B9C96 /* main.m in Sources */,
+				F5460DF52150982E000B9C96 /* UIImage+Extension.m in Sources */,
+				F5460DED2150980B000B9C96 /* JPPageControl.m in Sources */,
+				F5460DF22150980B000B9C96 /* JPLoopCellModel.m in Sources */,
+				F5460DF8215098FF000B9C96 /* LoopViewController.m in Sources */,
+				F5460DF12150980B000B9C96 /* JPLoopViewLayout.m in Sources */,
+				F5460DEB2150980B000B9C96 /* JPLoopViewCell.m in Sources */,
+				F5460DF02150980B000B9C96 /* JPTimerManager.m in Sources */,
+				F5460DEE2150980B000B9C96 /* UIImageView+JPWebImage.m in Sources */,
+				F5460DEC2150980B000B9C96 /* JPLoopView.m in Sources */,
 				F5460DC6215097C1000B9C96 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
