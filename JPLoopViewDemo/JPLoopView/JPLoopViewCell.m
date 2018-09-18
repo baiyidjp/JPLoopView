@@ -43,7 +43,7 @@
 - (void)setCellModel:(JPLoopCellModel *)cellModel {
     
     _cellModel = cellModel;
-    //如项目中用到成熟的第三方:SDWebImage 等 可替换
+    //如项目中用到成熟的第三方:SDWebImage 等 可替换(可删除"UIImageView+JPWebImage.h" & "UIImage+Exension")
     [self.loopImageView jp_setImageWithURL:[NSURL URLWithString:cellModel.imageUrlStr] placeholderImage:cellModel.placeholderImage];
     
     BOOL isShowTitle = cellModel.isShowTitle;
