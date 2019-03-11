@@ -20,24 +20,34 @@ typedef NS_ENUM(NSInteger, JPLoopViewTitleAliment) {
 @interface JPLoopCellModel : NSObject
 
 /** URL */
-@property(nonatomic,copy)NSString *imageUrlStr;
+@property(nonatomic,copy) NSString *imageUrlStr;
 /** placeholderimage */
 @property(nonatomic,strong) UIImage *placeholderImage;
 
 /** showtext */
 @property(nonatomic,assign) BOOL isShowTitle;
 /** text */
-@property(nonatomic,copy)NSString *imageTitleStr;
+@property(nonatomic,copy) NSString *imageTitleStr;
+/** showAtt */
+@property(nonatomic,assign) BOOL isShowAttributedText;
+/** text富文本 */
+@property(nonatomic,copy) NSAttributedString *imageTitleAttStr;
 /** titletype */
 @property(nonatomic,assign) JPLoopViewTitleAliment titleAliment;
 /** titlefont */
 @property(nonatomic,strong) UIFont *titleFont;
+/** titleNumLines */
+@property(nonatomic,assign) CGFloat titleNumLines;
 /** title color*/
 @property(nonatomic,strong) UIColor *titleColor;
 /** leftOffset 左边距离BgView的间距 默认10 */
 @property(nonatomic,assign) CGFloat titleLeftOffset;
+/** bottomOffset 下边距离BgView的间距 默认0 */
+@property(nonatomic,assign) CGFloat titleBottomOffset;
 /** rightOffset 右边距离BgView的间距 默认10 */
 @property(nonatomic,assign) CGFloat titleRightOffset;
+/** height titleheight 默认44 */
+@property(nonatomic,assign) CGFloat titleHeight;
 
 /** bgcolor */
 @property(nonatomic,strong) UIColor *bgViewColor;
@@ -49,5 +59,12 @@ typedef NS_ENUM(NSInteger, JPLoopViewTitleAliment) {
 @property(nonatomic,assign) CGFloat bgViewBottomOffset;
 /** bgView height */
 @property(nonatomic,assign) CGFloat bgViewHeight;
+
+/** isShowImageMaskView NO */
+@property(nonatomic,assign) BOOL isShowImageMaskView;
+/** imageMaskViewColor black 0.2 */
+@property(nonatomic,strong) UIColor *imageMaskViewColor;
+/** imageMaskViewFrame default image.bounds */
+@property(nonatomic,assign) CGRect imageMaskViewFrame;
 
 @end

@@ -14,4 +14,7 @@
 /** model */
 @property(nonatomic,strong) JPLoopCellModel *cellModel;
 
+/** imageView */
+- (UIImageView *)getLoopImageView;
+
 @end

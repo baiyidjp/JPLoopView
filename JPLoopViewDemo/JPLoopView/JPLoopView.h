@@ -20,8 +20,16 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 @class JPLoopView;
 @protocol JPLoopViewDelegate <NSObject>
 
+@optional
 //* 点击图片的代理方法 */
 - (void)didSelectItem:(JPLoopView *)loopView index:(NSInteger)index;
+//* 点击图片的代理方法 */
+- (void)didSelectItem:(JPLoopView *)loopView index:(NSInteger)index currentImageView:(UIImageView *)imageView;
+
+//手指开始滑动
+- (void)loopViewWillBeginDragging;
+//手指结束滑动
+- (void)loopViewDidEndDragging;
 
 @end
 
@@ -50,6 +58,15 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 /**
  创建一个轮播图
 
+ @param frame frame description
+ @param placeholderImage placeholderImage description
+ @return return value description
+ */
++ (instancetype)loopViewWithFrame:(CGRect)frame placeholderImage:(UIImage *)placeholderImage;
+
+/**
+ 创建一个轮播图
+
  @param frame 布局
  @param delegate 代理
  @param placeholderImage 占位图(可为nil)
@@ -73,6 +90,12 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
  */
 - (void)setLoopImageArray:(NSArray *)loopImageArray loopTitleArray:(NSArray *)loopTitleArray;
 
+/**
+ 设置是否可以滚动轮播图
+
+ @param canScroll canScroll description
+ */
+- (void)setLoopViewCanScroll:(BOOL)canScroll;
 
 /*********************轮播相关***********************/
 
@@ -105,12 +128,21 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 /** pageBottomOffset 分页下班边的间距 默认5 */
 @property(nonatomic,assign) CGFloat pageControlBottomOffset;
 
+/** isShowImageMaskView NO */
+@property(nonatomic,assign) BOOL isShowImageMaskView;
+/** imageMaskViewColor black 0.2 */
+@property(nonatomic,strong) UIColor *imageMaskViewColor;
+/** imageMaskViewFrame default image.bounds */
+@property(nonatomic,assign) CGRect imageMaskViewFrame;
+
 /*********************轮播相关***********************/
 
 /*********************文本相关***********************/
 
 /** titleAliment 轮播图文本的位置 默认center*/
 @property(nonatomic,assign) JPLoopViewTitleAliment titleAliment;
+/** titleNumLines 默认1 */
+@property(nonatomic,assign) CGFloat titleNumLines;
 /** titlefont 默认 17 */
 @property(nonatomic,strong) UIFont *titleFont;
 /** title color 默认 白色 */
@@ -119,6 +151,14 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 @property(nonatomic,assign) CGFloat titleLeftOffset;
 /** rightOffset 右边距离BgView的间距 默认10 */
 @property(nonatomic,assign) CGFloat titleRightOffset;
+/** height title高度 默认44 */
+@property(nonatomic,assign) CGFloat titleHeight;
+/** bottomOffset 下边距离BgView的间距 默认0 */
+@property(nonatomic,assign) CGFloat titleBottomOffset;
+/** showAttritubedText 默认NO */
+@property (nonatomic, assign) BOOL showAttritubedText;
+/** banner heights */
+@property(nonatomic,strong) NSArray *titleHeights;
 
 /** bgcolor 默认 黑色0.5透明 */
 @property(nonatomic,strong) UIColor *bgViewColor;
@@ -137,6 +177,8 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 
 /** isAutoScroll 是否自动滚动 默认YES */
 @property(nonatomic,assign) BOOL isAutoScroll;
+/** 如果设置了isAutoScroll=YES 一张图片是否自动滚动 默认YES */
+@property(nonatomic,assign) BOOL isAutoScrollOnlyOne;
 /** intervalTime 自动滚动时间间隔 默认2s */
 @property(nonatomic,assign) NSTimeInterval intervalTime;
 /** 是否无限循环,默认Yes */

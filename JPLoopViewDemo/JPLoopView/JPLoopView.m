@@ -29,6 +29,8 @@ NSInteger const allCount = 10000;//不能是奇数
 @property(nonatomic,assign) NSInteger totalItemsCount;
 /** 当前计时器的名字 */
 @property(nonatomic,strong) NSString *timerManageName;
+/** default frame */
+@property(nonatomic,assign) CGRect defaultFrame;
 
 @end
 
@@ -54,6 +56,11 @@ NSInteger const allCount = 10000;//不能是奇数
     return [self loopViewWithFrame:frame delegate:delegate placeholderImage:nil];
 }
 
++ (instancetype)loopViewWithFrame:(CGRect)frame placeholderImage:(UIImage *)placeholderImage {
+    
+    return [self loopViewWithFrame:frame delegate:nil placeholderImage:placeholderImage];
+}
+
 + (instancetype)loopViewWithFrame:(CGRect)frame delegate:(id<JPLoopViewDelegate>)delegate placeholderImage:(UIImage *)placeholderImage {
     
     JPLoopView *loopView = [[self alloc] initWithFrame:frame];
@@ -68,7 +75,8 @@ NSInteger const allCount = 10000;//不能是奇数
     if (self) {
         
         self.frame = frame;
-        
+        //记录loopView初始frame
+        self.defaultFrame = frame;
         [self p_SetDefaultData];
         [self p_SetUI];
     }
@@ -79,23 +87,30 @@ NSInteger const allCount = 10000;//不能是奇数
 - (void)p_SetDefaultData {
     
     self.pageControlAliment = JPLoopViewPageControlAlimentCenter;
-    self.currentPageIndicatorTintColor = [UIColor redColor];
-    self.pageIndicatorTintColor = [UIColor orangeColor];
+    self.currentPageIndicatorTintColor = [UIColor whiteColor];
+    self.pageIndicatorTintColor = [UIColor redColor];
     self.pageIndicatorSpaing = 5;
     self.currentPageIndicatorSize = CGSizeMake(6, 6);
     self.pageIndicatorSize = CGSizeMake(6, 6);
     self.pageControlEnabled = NO;
     self.hidesPageControlWhenSingle = YES;
-    self.pageControlLeftOffset = 10;
-    self.pageControlRightOffset = 10;
-    self.pageControlBottomOffset = 5;
+    self.pageControlLeftOffset = 16;
+    self.pageControlRightOffset = 16;
+    self.pageControlBottomOffset = 8;
+    self.isShowImageMaskView = NO;
+    self.imageMaskViewColor = [UIColor lightGrayColor];
+    self.imageMaskViewFrame = self.bounds;
     
     self.titleAliment = JPLoopViewTitleAlimentCenter;
+    self.titleNumLines = 1;
     self.titleFont = [UIFont systemFontOfSize:15];
     self.titleColor = [UIColor whiteColor];
-    self.titleLeftOffset = 10;
-    self.titleRightOffset = 10;
-    self.bgViewColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    self.titleLeftOffset = 16;
+    self.titleRightOffset = 16;
+    self.titleHeight = 44;
+    self.titleBottomOffset = 0;
+    self.showAttritubedText = NO;
+    self.bgViewColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.25];
     self.bgViewLeftOffset = 0;
     self.bgViewRightOffset = 0;
     self.bgViewBottomOffset = 0;
@@ -114,6 +129,7 @@ NSInteger const allCount = 10000;//不能是奇数
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[JPLoopViewCell class] forCellWithReuseIdentifier:JPCollectionViewCellID];
+    self.collectionView.backgroundColor = [UIColor blackColor];
     [self addSubview:self.collectionView];
 }
 
@@ -142,6 +158,14 @@ NSInteger const allCount = 10000;//不能是奇数
     self.pageControl = pageControl;
     
     CGSize pageSize = pageControl.contentSize;
+    CGFloat currentViewWidth = self.frame.size.width;
+    CGFloat currentViewHeight = self.frame.size.height;
+    
+    if ((self.defaultFrame.size.width != self.frame.size.width) || (self.defaultFrame.size.height != self.frame.size.height)) {
+        //loopView 进行缩放 会影响pageControl的位置
+        currentViewWidth = self.defaultFrame.size.width;
+        currentViewHeight = self.defaultFrame.size.height;
+    }
     switch (self.pageControlAliment) {
         case JPLoopViewPageControlAlimentNone:
         {
@@ -152,20 +176,20 @@ NSInteger const allCount = 10000;//不能是奇数
         case JPLoopViewPageControlAlimentLeft:
         {
             pageControl.hidden = NO;
-            pageControl.frame = CGRectMake(self.pageControlLeftOffset, self.frame.size.height-self.pageControlBottomOffset-pageSize.height, pageSize.width, pageSize.height);
+            pageControl.frame = CGRectMake(self.pageControlLeftOffset, currentViewHeight-self.pageControlBottomOffset-pageSize.height, pageSize.width, pageSize.height);
         }
             break;
         case JPLoopViewPageControlAlimentCenter:
         {
             pageControl.hidden = NO;
-            pageControl.frame = CGRectMake(self.frame.size.width*0.5-pageSize.width*0.5, self.frame.size.height-self.pageControlBottomOffset-pageSize.height, pageSize.width, pageSize.height);
+            pageControl.frame = CGRectMake(currentViewWidth*0.5-pageSize.width*0.5, currentViewHeight-self.pageControlBottomOffset-pageSize.height, pageSize.width, pageSize.height);
 
         }
             break;
         case JPLoopViewPageControlAlimentRight:
         {
             pageControl.hidden = NO;
-            pageControl.frame = CGRectMake(self.frame.size.width-self.pageControlRightOffset-pageSize.width, self.frame.size.height-self.pageControlBottomOffset-pageSize.height, pageSize.width, pageSize.height);
+            pageControl.frame = CGRectMake(currentViewWidth-self.pageControlRightOffset-pageSize.width, currentViewHeight-self.pageControlBottomOffset-pageSize.height, pageSize.width, pageSize.height);
 
         }
             break;
@@ -175,98 +199,139 @@ NSInteger const allCount = 10000;//不能是奇数
 #pragma mark - 接收外部传入图片数据
 - (void)setLoopImageArray:(NSArray *)loopImageArray {
     
-    if (!loopImageArray.count) {
-        return;
-    }
-    
     [self.loopDataModels removeAllObjects];
     
-    NSMutableArray *urls = [NSMutableArray new];
-    
-    [loopImageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *urlString;
-        if ([obj isKindOfClass:[NSString class]]) {
-            urlString = obj;
-        } else if ([obj isKindOfClass:[NSURL class]]) {
-            NSURL *url = (NSURL *)obj;
-            urlString = [url absoluteString];
-        }
-        if (urlString && urlString.length) {
-            [urls addObject:urlString];
-        }
-
-    }];
-    
-    if (urls.count) {
-        for (NSString *url in urls) {
-            JPLoopCellModel *cellModel = [[JPLoopCellModel alloc] init];
-            cellModel.imageUrlStr = url;
-            cellModel.isShowTitle = NO;
-            [self.loopDataModels addObject:cellModel];
-        }
+    if (!loopImageArray.count ||!loopImageArray) {
+        
+        JPLoopCellModel *cellModel = [[JPLoopCellModel alloc] init];
+        cellModel.imageUrlStr = @"";
+        cellModel.placeholderImage = self.placeholderImage;
+        cellModel.isShowTitle = NO;
+        cellModel.isShowImageMaskView = self.isShowImageMaskView;
+        cellModel.imageMaskViewColor = self.imageMaskViewColor;
+        cellModel.imageMaskViewFrame = self.imageMaskViewFrame;
+        [self.loopDataModels addObject:cellModel];
         [self setLoopData];
+    } else {
+        
+        NSMutableArray *urls = [NSMutableArray new];
+        
+        [loopImageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *urlString;
+            if ([obj isKindOfClass:[NSString class]]) {
+                urlString = obj;
+            } else if ([obj isKindOfClass:[NSURL class]]) {
+                NSURL *url = (NSURL *)obj;
+                urlString = [url absoluteString];
+            }
+            if (urlString && urlString.length) {
+                [urls addObject:urlString];
+            }
+            
+        }];
+        
+        if (urls.count) {
+            for (NSString *url in urls) {
+                JPLoopCellModel *cellModel = [[JPLoopCellModel alloc] init];
+                cellModel.imageUrlStr = url;
+                cellModel.placeholderImage = self.placeholderImage;
+                cellModel.isShowTitle = NO;
+                cellModel.isShowImageMaskView = self.isShowImageMaskView;
+                cellModel.imageMaskViewColor = self.imageMaskViewColor;
+                cellModel.imageMaskViewFrame = self.imageMaskViewFrame;
+                [self.loopDataModels addObject:cellModel];
+            }
+            [self setLoopData];
+        }
     }
+    
 }
 
 - (void)setLoopImageArray:(NSArray *)loopImageArray loopTitleArray:(NSArray *)loopTitleArray {
     
-    if (!loopImageArray || !loopImageArray.count || (loopTitleArray && loopTitleArray.count && (loopImageArray.count != loopTitleArray.count))) {
-        NSLog(@"imageCount != titleCount");
-        return;
-    }
-    
     [self.loopDataModels removeAllObjects];
     
-    NSMutableArray *urls = [NSMutableArray new];
-    
-    [loopImageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSString *urlString;
-        if ([obj isKindOfClass:[NSString class]]) {
-            urlString = obj;
-        } else if ([obj isKindOfClass:[NSURL class]]) {
-            NSURL *url = (NSURL *)obj;
-            urlString = [url absoluteString];
-        }
-        if (urlString && urlString.length) {
-            [urls addObject:urlString];
-        }
+    if (!loopImageArray || !loopImageArray.count || (loopTitleArray && loopTitleArray.count && (loopImageArray.count != loopTitleArray.count))) {
         
-    }];
-    
-    if (urls.count) {
-        for (NSString *url in urls) {
-            JPLoopCellModel *cellModel = [[JPLoopCellModel alloc] init];
-            cellModel.imageUrlStr = url;
-            cellModel.placeholderImage = self.placeholderImage;
-            cellModel.isShowTitle = NO; //不存在文本 强制为NO
-            [self.loopDataModels addObject:cellModel];
-        }
-        if (self.loopDataModels.count && loopTitleArray && loopImageArray.count && (loopTitleArray.count == self.loopDataModels.count)) {
-            for (NSInteger i = 0; i < self.loopDataModels.count;i++) {
-                JPLoopCellModel *cellModel = self.loopDataModels[i];
-                cellModel.isShowTitle = YES;
-                cellModel.imageTitleStr = loopTitleArray[i];
-                cellModel.titleFont = self.titleFont;
-                cellModel.titleColor = self.titleColor;
-                cellModel.titleAliment = self.titleAliment;
-                cellModel.titleLeftOffset = self.titleLeftOffset;
-                cellModel.titleRightOffset = self.titleRightOffset;
-                cellModel.bgViewColor = self.bgViewColor;
-                cellModel.bgViewHeight = self.bgViewHeight;
-                cellModel.bgViewLeftOffset = self.bgViewLeftOffset;
-                cellModel.bgViewRightOffset = self.bgViewRightOffset;
-                cellModel.bgViewBottomOffset = self.bgViewBottomOffset;
-            }
-        }
+        JPLoopCellModel *cellModel = [[JPLoopCellModel alloc] init];
+        cellModel.imageUrlStr = @"";
+        cellModel.placeholderImage = self.placeholderImage;
+        cellModel.isShowTitle = NO;
+        cellModel.isShowImageMaskView = self.isShowImageMaskView;
+        cellModel.imageMaskViewColor = self.imageMaskViewColor;
+        cellModel.imageMaskViewFrame = self.imageMaskViewFrame;
+        [self.loopDataModels addObject:cellModel];
         [self setLoopData];
+    } else {
+        
+        NSMutableArray *urls = [NSMutableArray new];
+        
+        [loopImageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *urlString;
+            if ([obj isKindOfClass:[NSString class]]) {
+                urlString = obj;
+            } else if ([obj isKindOfClass:[NSURL class]]) {
+                NSURL *url = (NSURL *)obj;
+                urlString = [url absoluteString];
+            }
+            if (urlString) {
+                [urls addObject:urlString];
+            }
+            
+        }];
+        
+        if (urls.count) {
+            for (NSString *url in urls) {
+                JPLoopCellModel *cellModel = [[JPLoopCellModel alloc] init];
+                cellModel.imageUrlStr = url;
+                cellModel.placeholderImage = self.placeholderImage;
+                cellModel.isShowTitle = NO; //不存在文本 强制为NO
+                [self.loopDataModels addObject:cellModel];
+            }
+            if (self.loopDataModels.count && loopTitleArray && loopImageArray.count) {
+                for (NSInteger i = 0; i < loopTitleArray.count;i++) {
+                    JPLoopCellModel *cellModel = self.loopDataModels[i];
+                    cellModel.isShowTitle = YES;
+                    cellModel.isShowAttributedText = self.showAttritubedText;
+                    if (self.showAttritubedText) {
+                        cellModel.imageTitleAttStr = loopTitleArray[i];
+                        cellModel.bgViewColor = cellModel.imageTitleAttStr.length ? self.bgViewColor : [UIColor clearColor];
+                    }else {
+                        cellModel.imageTitleStr = loopTitleArray[i];
+                        cellModel.bgViewColor = cellModel.imageTitleStr.length ? self.bgViewColor : [UIColor clearColor];
+                    }
+                    cellModel.titleNumLines = self.titleNumLines;
+                    cellModel.titleFont = self.titleFont;
+                    cellModel.titleColor = self.titleColor;
+                    cellModel.titleAliment = self.titleAliment;
+                    cellModel.titleLeftOffset = self.titleLeftOffset;
+                    cellModel.titleRightOffset = self.titleRightOffset;
+                    cellModel.titleHeight = [self.titleHeights[i] floatValue];
+                    cellModel.titleBottomOffset = self.titleBottomOffset;
+                    cellModel.bgViewHeight = self.bgViewHeight;
+                    cellModel.bgViewLeftOffset = self.bgViewLeftOffset;
+                    cellModel.bgViewRightOffset = self.bgViewRightOffset;
+                    cellModel.bgViewBottomOffset = self.bgViewBottomOffset;
+                    cellModel.isShowImageMaskView = self.isShowImageMaskView;
+                    cellModel.imageMaskViewColor = self.imageMaskViewColor;
+                    cellModel.imageMaskViewFrame = self.imageMaskViewFrame;
+                }
+            }
+            [self setLoopData];
+        }
     }
-
 }
 
 #pragma mark - 设置显示的数据
 - (void)setLoopData {
     
     if (!self.loopDataModels.count) {
+        //如果是无线滚动 结束定时器
+        if (self.isAutoScroll) {
+            
+            [self p_InvalidateTimer];
+        }
+        self.collectionView.scrollEnabled = NO;
         return;
     }
     
@@ -311,6 +376,11 @@ NSInteger const allCount = 10000;//不能是奇数
     if ([self.delegate respondsToSelector:@selector(didSelectItem:index:)]) {
         [self.delegate didSelectItem:self index:indexPath.item % self.loopDataModels.count];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(didSelectItem:index:currentImageView:)]) {
+        JPLoopViewCell *cell = (JPLoopViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        [self.delegate didSelectItem:self index:indexPath.item % self.loopDataModels.count currentImageView:[cell getLoopImageView]];
+    }
 }
 
 //滚动
@@ -339,6 +409,10 @@ NSInteger const allCount = 10000;//不能是奇数
         
         [self p_InvalidateTimer];
     }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(loopViewWillBeginDragging)]) {
+        [self.delegate loopViewWillBeginDragging];
+    }
 }
 
 //手指结束滑动
@@ -349,7 +423,10 @@ NSInteger const allCount = 10000;//不能是奇数
         
         [self p_StarTimer];
     }
-
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(loopViewDidEndDragging)]) {
+        [self.delegate loopViewDidEndDragging];
+    }
 }
 
 //手指滑动 滚动的位置
@@ -380,6 +457,10 @@ NSInteger const allCount = 10000;//不能是奇数
 - (void)p_StarTimer {
     
     [self p_InvalidateTimer];
+    
+    if (self.loopDataModels.count == 1 && self.isAutoScrollOnlyOne) {
+        return;
+    }
     
     self.timerManageName = [JPTimerManager timerBeginWithStartTime:self.intervalTime intervalTime:self.intervalTime repeats:YES async:NO target:[[JPProxy alloc] initWithTarget:self] selector:@selector(p_ScrollLoopView)];
 }
@@ -431,6 +512,18 @@ NSInteger const allCount = 10000;//不能是奇数
         }
     }
     return 0;
+}
+
+- (void)setLoopViewCanScroll:(BOOL)canScroll {
+    
+    if (self.loopDataModels.count > 1) {
+
+        self.collectionView.scrollEnabled = canScroll;
+        
+    } else {
+        //如果图片小于1张,则不可滑动
+        self.collectionView.scrollEnabled = NO;
+    }
 }
 
 - (void)dealloc {

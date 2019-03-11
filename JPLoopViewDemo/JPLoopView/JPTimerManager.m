@@ -91,6 +91,10 @@ dispatch_semaphore_t _semaphore;
         return;
     }
     
+    if (![self checkTimerRun:name]) {
+        return;
+    }
+    
     /****************************加锁******************************/
     dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
     
@@ -105,6 +109,18 @@ dispatch_semaphore_t _semaphore;
 
     /****************************解锁******************************/
     dispatch_semaphore_signal(_semaphore);
+}
+
++ (BOOL)checkTimerRun:(NSString *)name {
+    
+    if (!name || !name.length) {
+        
+        return NO;
+    }
+
+    BOOL run = [_timersDict.allKeys containsObject:name];
+    
+    return run;
 }
 
 @end

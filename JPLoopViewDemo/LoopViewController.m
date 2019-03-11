@@ -44,8 +44,6 @@
     
     
     self.loopView_1 = [[JPLoopView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(btn.frame)+20, self.view.bounds.size.width, self.view.bounds.size.width*9.0/16)];
-    //    self.loopView_1 = [JPLoopView loopViewWithFrame:CGRectMake(0, CGRectGetMaxY(btn.frame)+20, self.view.bounds.size.width, self.view.bounds.size.width*9.0/16)];
-    self.loopView_1.pageIndicatorTintColor = [UIColor whiteColor];
     self.loopView_1.intervalTime = 5;
     self.loopView_1.pageControlAliment = JPLoopViewPageControlAlimentLeft;
     self.loopView_1.delegate = self;
