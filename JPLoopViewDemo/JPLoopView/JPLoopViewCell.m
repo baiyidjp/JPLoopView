@@ -8,7 +8,7 @@
 
 #import "JPLoopViewCell.h"
 #import "JPLoopCellModel.h"
-#import "UIImageView+JPWebImage.h"
+#import "UIImageView+WebCache.h"
 
 @interface JPLoopViewCell ()
 /** imageView */
@@ -57,7 +57,7 @@
     
     _cellModel = cellModel;
     
-    [self.loopImageView jp_setImageWithURL:[NSURL URLWithString:cellModel.imageUrlStr] placeholderImage:cellModel.placeholderImage];
+    [self.loopImageView sd_setImageWithURL:[NSURL URLWithString:cellModel.imageUrlStr] placeholderImage:cellModel.placeholderImage];
     
     self.maskView.hidden = !cellModel.isShowImageMaskView;
     self.maskView.frame = cellModel.imageMaskViewFrame;

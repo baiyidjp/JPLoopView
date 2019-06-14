@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53CCCB0FB352531B3DC81172 /* libPods-JPLoopViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F80119B5710FEB6EB506241E /* libPods-JPLoopViewDemo.a */; };
 		F5460DC6215097C1000B9C96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DC5215097C1000B9C96 /* AppDelegate.m */; };
 		F5460DC9215097C2000B9C96 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DC8215097C2000B9C96 /* ViewController.m */; };
 		F5460DCC215097C2000B9C96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5460DCA215097C2000B9C96 /* Main.storyboard */; };
@@ -16,16 +17,16 @@
 		F5460DEB2150980B000B9C96 /* JPLoopViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DDB2150980B000B9C96 /* JPLoopViewCell.m */; };
 		F5460DEC2150980B000B9C96 /* JPLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DDC2150980B000B9C96 /* JPLoopView.m */; };
 		F5460DED2150980B000B9C96 /* JPPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE02150980B000B9C96 /* JPPageControl.m */; };
-		F5460DEE2150980B000B9C96 /* UIImageView+JPWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE22150980B000B9C96 /* UIImageView+JPWebImage.m */; };
 		F5460DEF2150980B000B9C96 /* JPProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE52150980B000B9C96 /* JPProxy.m */; };
 		F5460DF02150980B000B9C96 /* JPTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE62150980B000B9C96 /* JPTimerManager.m */; };
 		F5460DF12150980B000B9C96 /* JPLoopViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE72150980B000B9C96 /* JPLoopViewLayout.m */; };
 		F5460DF22150980B000B9C96 /* JPLoopCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DE92150980B000B9C96 /* JPLoopCellModel.m */; };
-		F5460DF52150982E000B9C96 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DF42150982E000B9C96 /* UIImage+Extension.m */; };
 		F5460DF8215098FF000B9C96 /* LoopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DF7215098FF000B9C96 /* LoopViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8313F02AF2AE1AB0BDBA2A83 /* Pods-JPLoopViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPLoopViewDemo.debug.xcconfig"; path = "Target Support Files/Pods-JPLoopViewDemo/Pods-JPLoopViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C15A0395B8EB08EAE1DF00A6 /* Pods-JPLoopViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPLoopViewDemo.release.xcconfig"; path = "Target Support Files/Pods-JPLoopViewDemo/Pods-JPLoopViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F5460DC1215097C1000B9C96 /* JPLoopViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JPLoopViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5460DC4215097C1000B9C96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F5460DC5215097C1000B9C96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -43,19 +44,16 @@
 		F5460DDF2150980B000B9C96 /* JPLoopViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopViewLayout.h; sourceTree = "<group>"; };
 		F5460DE02150980B000B9C96 /* JPPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPPageControl.m; sourceTree = "<group>"; };
 		F5460DE12150980B000B9C96 /* JPLoopCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopCellModel.h; sourceTree = "<group>"; };
-		F5460DE22150980B000B9C96 /* UIImageView+JPWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+JPWebImage.m"; sourceTree = "<group>"; };
 		F5460DE32150980B000B9C96 /* JPLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopView.h; sourceTree = "<group>"; };
 		F5460DE42150980B000B9C96 /* JPLoopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopViewCell.h; sourceTree = "<group>"; };
 		F5460DE52150980B000B9C96 /* JPProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPProxy.m; sourceTree = "<group>"; };
 		F5460DE62150980B000B9C96 /* JPTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPTimerManager.m; sourceTree = "<group>"; };
 		F5460DE72150980B000B9C96 /* JPLoopViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopViewLayout.m; sourceTree = "<group>"; };
-		F5460DE82150980B000B9C96 /* UIImageView+JPWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+JPWebImage.h"; sourceTree = "<group>"; };
 		F5460DE92150980B000B9C96 /* JPLoopCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopCellModel.m; sourceTree = "<group>"; };
 		F5460DEA2150980B000B9C96 /* JPPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPPageControl.h; sourceTree = "<group>"; };
-		F5460DF32150982E000B9C96 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
-		F5460DF42150982E000B9C96 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		F5460DF6215098FF000B9C96 /* LoopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoopViewController.h; sourceTree = "<group>"; };
 		F5460DF7215098FF000B9C96 /* LoopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoopViewController.m; sourceTree = "<group>"; };
+		F80119B5710FEB6EB506241E /* libPods-JPLoopViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JPLoopViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +61,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53CCCB0FB352531B3DC81172 /* libPods-JPLoopViewDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5709F1BAE0B7C7143AF50766 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F80119B5710FEB6EB506241E /* libPods-JPLoopViewDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9EF7D977E1F64BF9064BFD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8313F02AF2AE1AB0BDBA2A83 /* Pods-JPLoopViewDemo.debug.xcconfig */,
+				C15A0395B8EB08EAE1DF00A6 /* Pods-JPLoopViewDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F5460DB8215097C1000B9C96 = {
 			isa = PBXGroup;
 			children = (
 				F5460DC3215097C1000B9C96 /* JPLoopViewDemo */,
 				F5460DC2215097C1000B9C96 /* Products */,
+				A9EF7D977E1F64BF9064BFD9 /* Pods */,
+				5709F1BAE0B7C7143AF50766 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,10 +140,6 @@
 				F5460DE02150980B000B9C96 /* JPPageControl.m */,
 				F5460DDE2150980B000B9C96 /* JPProxy.h */,
 				F5460DE52150980B000B9C96 /* JPProxy.m */,
-				F5460DF32150982E000B9C96 /* UIImage+Extension.h */,
-				F5460DF42150982E000B9C96 /* UIImage+Extension.m */,
-				F5460DE82150980B000B9C96 /* UIImageView+JPWebImage.h */,
-				F5460DE22150980B000B9C96 /* UIImageView+JPWebImage.m */,
 			);
 			path = JPLoopView;
 			sourceTree = "<group>";
@@ -136,6 +151,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5460DD7215097C3000B9C96 /* Build configuration list for PBXNativeTarget "JPLoopViewDemo" */;
 			buildPhases = (
+				B9FF0E714196902BB4311E75 /* [CP] Check Pods Manifest.lock */,
 				F5460DBD215097C1000B9C96 /* Sources */,
 				F5460DBE215097C1000B9C96 /* Frameworks */,
 				F5460DBF215097C1000B9C96 /* Resources */,
@@ -194,6 +210,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B9FF0E714196902BB4311E75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JPLoopViewDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F5460DBD215097C1000B9C96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -202,14 +243,12 @@
 				F5460DEF2150980B000B9C96 /* JPProxy.m in Sources */,
 				F5460DC9215097C2000B9C96 /* ViewController.m in Sources */,
 				F5460DD4215097C3000B9C96 /* main.m in Sources */,
-				F5460DF52150982E000B9C96 /* UIImage+Extension.m in Sources */,
 				F5460DED2150980B000B9C96 /* JPPageControl.m in Sources */,
 				F5460DF22150980B000B9C96 /* JPLoopCellModel.m in Sources */,
 				F5460DF8215098FF000B9C96 /* LoopViewController.m in Sources */,
 				F5460DF12150980B000B9C96 /* JPLoopViewLayout.m in Sources */,
 				F5460DEB2150980B000B9C96 /* JPLoopViewCell.m in Sources */,
 				F5460DF02150980B000B9C96 /* JPTimerManager.m in Sources */,
-				F5460DEE2150980B000B9C96 /* UIImageView+JPWebImage.m in Sources */,
 				F5460DEC2150980B000B9C96 /* JPLoopView.m in Sources */,
 				F5460DC6215097C1000B9C96 /* AppDelegate.m in Sources */,
 			);
@@ -351,6 +390,7 @@
 		};
 		F5460DD8215097C3000B9C96 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8313F02AF2AE1AB0BDBA2A83 /* Pods-JPLoopViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -367,6 +407,7 @@
 		};
 		F5460DD9215097C3000B9C96 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C15A0395B8EB08EAE1DF00A6 /* Pods-JPLoopViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -13,7 +13,7 @@
 //存储所有的 timer 一个标识一个timer
 static NSMutableDictionary *_timersDict;
 //信号量 用来加锁
-dispatch_semaphore_t _semaphore;
+dispatch_semaphore_t _timeSemaphore;
 
 + (void)initialize {
 
@@ -21,7 +21,7 @@ dispatch_semaphore_t _semaphore;
     dispatch_once(&onceToken, ^{
         
         _timersDict = [NSMutableDictionary dictionary];
-        _semaphore = dispatch_semaphore_create(1);
+        _timeSemaphore = dispatch_semaphore_create(1);
     });
     
 }
@@ -41,7 +41,7 @@ dispatch_semaphore_t _semaphore;
     dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, startTime * NSEC_PER_SEC),  intervalTime * NSEC_PER_SEC, 0);
     
     /****************************加锁******************************/
-    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_semaphore_wait(_timeSemaphore, DISPATCH_TIME_FOREVER);
     
     //设置定时器的唯一标识
     NSString *timerName = [NSString stringWithFormat:@"timerName_%zd",_timersDict.count];
@@ -49,7 +49,7 @@ dispatch_semaphore_t _semaphore;
     [_timersDict setObject:timer forKey:timerName];
     
     /****************************解锁******************************/
-    dispatch_semaphore_signal(_semaphore);
+    dispatch_semaphore_signal(_timeSemaphore);
     
     //定时器的回调
     dispatch_source_set_event_handler(timer, ^{
@@ -96,7 +96,7 @@ dispatch_semaphore_t _semaphore;
     }
     
     /****************************加锁******************************/
-    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+    dispatch_semaphore_wait(_timeSemaphore, DISPATCH_TIME_FOREVER);
     
     //取出timer
     dispatch_source_t timer = [_timersDict objectForKey:name];
@@ -108,7 +108,7 @@ dispatch_semaphore_t _semaphore;
     }
 
     /****************************解锁******************************/
-    dispatch_semaphore_signal(_semaphore);
+    dispatch_semaphore_signal(_timeSemaphore);
 }
 
 + (BOOL)checkTimerRun:(NSString *)name {

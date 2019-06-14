@@ -78,7 +78,7 @@ NSInteger const allCount = 10000;//不能是奇数
         //记录loopView初始frame
         self.defaultFrame = frame;
         [self p_SetDefaultData];
-        [self p_SetUI];
+        [self p_ConfigView];
     }
     return self;
 }
@@ -88,7 +88,7 @@ NSInteger const allCount = 10000;//不能是奇数
     
     self.pageControlAliment = JPLoopViewPageControlAlimentCenter;
     self.currentPageIndicatorTintColor = [UIColor whiteColor];
-    self.pageIndicatorTintColor = [UIColor redColor];
+    self.pageIndicatorTintColor = [UIColor colorWithWhite:1 alpha:0.5];
     self.pageIndicatorSpaing = 5;
     self.currentPageIndicatorSize = CGSizeMake(6, 6);
     self.pageIndicatorSize = CGSizeMake(6, 6);
@@ -98,7 +98,7 @@ NSInteger const allCount = 10000;//不能是奇数
     self.pageControlRightOffset = 16;
     self.pageControlBottomOffset = 8;
     self.isShowImageMaskView = NO;
-    self.imageMaskViewColor = [UIColor lightGrayColor];
+    self.imageMaskViewColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     self.imageMaskViewFrame = self.bounds;
     
     self.titleAliment = JPLoopViewTitleAlimentCenter;
@@ -123,13 +123,13 @@ NSInteger const allCount = 10000;//不能是奇数
 }
 
 #pragma mark -设置UI
-- (void)p_SetUI {
+- (void)p_ConfigView {
     
     self.collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:[[JPLoopViewLayout alloc]init]];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[JPLoopViewCell class] forCellWithReuseIdentifier:JPCollectionViewCellID];
-    self.collectionView.backgroundColor = [UIColor blackColor];
+    self.collectionView.backgroundColor = [UIColor lightGrayColor];
     [self addSubview:self.collectionView];
 }
 
@@ -324,14 +324,11 @@ NSInteger const allCount = 10000;//不能是奇数
 
 #pragma mark - 设置显示的数据
 - (void)setLoopData {
-    
+
     if (!self.loopDataModels.count) {
-        //如果是无线滚动 结束定时器
-        if (self.isAutoScroll) {
-            
-            [self p_InvalidateTimer];
-        }
         self.collectionView.scrollEnabled = NO;
+        //停止计时器
+        [self stopTimer];
         return;
     }
     
@@ -340,11 +337,15 @@ NSInteger const allCount = 10000;//不能是奇数
     if (self.loopDataModels.count != 1) {
         self.collectionView.scrollEnabled = YES;
         if (self.isAutoScroll) {
-            [self p_StarTimer];
+            [self startTimer];
         }
     } else {
-        //一张图片不准滑动了
-        self.collectionView.scrollEnabled = NO;
+        if (!self.isAutoScrollOnlyOne) {
+            //一张图片不准滑动了
+            self.collectionView.scrollEnabled = NO;
+            //停止计时器
+            [self stopTimer];
+        }
     }
 
     [self p_SetPageControl];
@@ -407,7 +408,7 @@ NSInteger const allCount = 10000;//不能是奇数
     //如果是无线滚动 结束定时器
     if (self.isAutoScroll) {
         
-        [self p_InvalidateTimer];
+        [self stopTimer];
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(loopViewWillBeginDragging)]) {
@@ -421,7 +422,7 @@ NSInteger const allCount = 10000;//不能是奇数
     //如果是无线滚动 重启定时器
     if (self.isAutoScroll) {
         
-        [self p_StarTimer];
+        [self startTimer];
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(loopViewDidEndDragging)]) {
@@ -454,9 +455,9 @@ NSInteger const allCount = 10000;//不能是奇数
 
 
 #pragma mark - starTimer 开始定时器
-- (void)p_StarTimer {
+- (void)startTimer {
     
-    [self p_InvalidateTimer];
+    [self stopTimer];
     
     if (self.loopDataModels.count == 1 && self.isAutoScrollOnlyOne) {
         return;
@@ -485,7 +486,7 @@ NSInteger const allCount = 10000;//不能是奇数
 
 
 #pragma mark -invalidateTimer 结束定时器
-- (void)p_InvalidateTimer {
+- (void)stopTimer {
     
     if (self.timerManageName) {
         [JPTimerManager cancelTask:self.timerManageName];
@@ -531,9 +532,7 @@ NSInteger const allCount = 10000;//不能是奇数
     NSLog(@"%s",__func__);
     self.collectionView.delegate = nil;
     self.collectionView.dataSource = nil;
-    if (self.timerManageName && self.timerManageName.length) {
-        [self p_InvalidateTimer];
-    }
+    [self stopTimer];
 }
 
 @end
