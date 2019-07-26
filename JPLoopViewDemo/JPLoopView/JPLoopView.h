@@ -109,6 +109,9 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 
 /*********************轮播相关***********************/
 
+/** loopViewBackgroundColor */
+@property(nonatomic,strong) UIColor *loopViewBackgroundColor;
+
 /** placeholderImage 未加载图片的占位图 */
 @property(nonatomic,strong) UIImage *placeholderImage;
 
@@ -153,11 +156,27 @@ typedef NS_ENUM(NSInteger, JPLoopViewPageControlAliment) {
 
 /** isShowImageMaskView NO */
 @property(nonatomic,assign) BOOL isShowImageMaskView;
+
 /** imageMaskViewColor black 0.2 */
 @property(nonatomic,strong) UIColor *imageMaskViewColor;
 
 /** imageMaskViewFrame default image.bounds */
 @property(nonatomic,assign) CGRect imageMaskViewFrame;
+
+/** isShowImageCornerRadius NO */
+@property(nonatomic,assign) BOOL isShowImageCornerRadius;
+
+/** imageCornerRadius default 8 */
+@property(nonatomic,assign) CGFloat imageCornerRadius;
+
+/** isShowimageBorder default NO */
+@property(nonatomic,assign) BOOL isShowimageBorder;
+
+/** imageBorderWidth default 1  */
+@property(nonatomic,assign) CGFloat imageBorderWidth;
+
+/** imageBorderColor default [UIColor grayColor]] */
+@property(nonatomic,strong) UIColor *imageBorderColor;
 
 /*********************轮播相关***********************/
 

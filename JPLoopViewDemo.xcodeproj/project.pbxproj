@@ -82,7 +82,6 @@
 				8313F02AF2AE1AB0BDBA2A83 /* Pods-JPLoopViewDemo.debug.xcconfig */,
 				C15A0395B8EB08EAE1DF00A6 /* Pods-JPLoopViewDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

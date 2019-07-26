@@ -46,7 +46,7 @@
         
         self.loopTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.contentView addSubview:self.loopTitleLabel];
-
+        
         self.loopSubTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.contentView addSubview:self.loopSubTitleLabel];
     }
@@ -57,6 +57,16 @@
     
     _cellModel = cellModel;
     
+    if (cellModel.isShowImageCornerRadius) {
+        self.loopImageView.layer.cornerRadius = cellModel.imageCornerRadius;
+        self.loopImageView.layer.masksToBounds = YES;
+    }
+    
+    if (cellModel.isShowimageBorder) {
+        self.loopImageView.layer.borderWidth = cellModel.imageBorderWidth;
+        self.loopImageView.layer.borderColor = cellModel.imageBorderColor.CGColor;
+    }
+    
     [self.loopImageView sd_setImageWithURL:[NSURL URLWithString:cellModel.imageUrlStr] placeholderImage:cellModel.placeholderImage];
     
     self.maskView.hidden = !cellModel.isShowImageMaskView;
@@ -65,7 +75,7 @@
     
     BOOL isShowTitle = cellModel.isShowTitle;
     if (isShowTitle) {
-
+        
         self.loopTitleLabel.numberOfLines = cellModel.titleNumLines;
         self.loopTitleLabel.font = cellModel.titleFont;
         self.loopTitleLabel.textColor = cellModel.titleColor;
@@ -79,7 +89,10 @@
         self.loopTitleBgView.backgroundColor = cellModel.bgViewColor;
         self.loopTitleBgView.frame = CGRectMake(cellModel.bgViewLeftOffset, self.frame.size.height-cellModel.bgViewHeight-cellModel.bgViewBottomOffset, self.frame.size.width-cellModel.bgViewLeftOffset-cellModel.bgViewRightOffset, cellModel.bgViewHeight);
         self.loopTitleLabel.frame = CGRectMake(CGRectGetMinX(self.loopTitleBgView.frame)+cellModel.titleLeftOffset, CGRectGetHeight(self.loopTitleBgView.frame)-cellModel.titleBottomOffset-cellModel.titleHeight, CGRectGetWidth(self.loopTitleBgView.frame)-cellModel.titleLeftOffset-cellModel.titleRightOffset, cellModel.titleHeight);
-
+        if (cellModel.isShowImageCornerRadius) {
+            self.loopTitleBgView.layer.cornerRadius = cellModel.imageCornerRadius;
+        }
+        
         switch (cellModel.titleAliment) {
             case JPLoopViewTitleAlimentNone:
             {
@@ -109,8 +122,9 @@
     }else {
         self.loopTitleLabel.hidden = self.loopTitleBgView.hidden = YES;
     }
-
+    
 }
+
 
 - (UIImageView *)getLoopImageView {
     

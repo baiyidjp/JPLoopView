@@ -67,4 +67,19 @@ typedef NS_ENUM(NSInteger, JPLoopViewTitleAliment) {
 /** imageMaskViewFrame default image.bounds */
 @property(nonatomic,assign) CGRect imageMaskViewFrame;
 
+/** isShowImageCornerRadius NO */
+@property(nonatomic,assign) BOOL isShowImageCornerRadius;
+
+/** imageCornerRadius default 8 */
+@property(nonatomic,assign) CGFloat imageCornerRadius;
+
+/** isShowimageBorder default NO */
+@property(nonatomic,assign) BOOL isShowimageBorder;
+
+/** imageBorderWidth default 0  */
+@property(nonatomic,assign) CGFloat imageBorderWidth;
+
+/** imageBorderColor default clear */
+@property(nonatomic,strong) UIColor *imageBorderColor;
+
 @end

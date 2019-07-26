@@ -86,6 +86,7 @@ NSInteger const allCount = 10000;//不能是奇数
 #pragma mark -设置默认数据
 - (void)p_SetDefaultData {
     
+    self.loopViewBackgroundColor = [UIColor whiteColor];
     self.pageControlAliment = JPLoopViewPageControlAlimentCenter;
     self.currentPageIndicatorTintColor = [UIColor whiteColor];
     self.pageIndicatorTintColor = [UIColor colorWithWhite:1 alpha:0.5];
@@ -100,6 +101,11 @@ NSInteger const allCount = 10000;//不能是奇数
     self.isShowImageMaskView = NO;
     self.imageMaskViewColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     self.imageMaskViewFrame = self.bounds;
+    self.isShowImageCornerRadius = NO;
+    self.isShowimageBorder = NO;
+    self.imageCornerRadius = 8;
+    self.imageBorderColor = [UIColor grayColor];
+    self.imageBorderWidth = 1;
     
     self.titleAliment = JPLoopViewTitleAlimentCenter;
     self.titleNumLines = 1;
@@ -129,7 +135,7 @@ NSInteger const allCount = 10000;//不能是奇数
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[JPLoopViewCell class] forCellWithReuseIdentifier:JPCollectionViewCellID];
-    self.collectionView.backgroundColor = [UIColor lightGrayColor];
+    self.collectionView.backgroundColor = self.loopViewBackgroundColor;
     [self addSubview:self.collectionView];
 }
 
@@ -239,6 +245,11 @@ NSInteger const allCount = 10000;//不能是奇数
                 cellModel.isShowImageMaskView = self.isShowImageMaskView;
                 cellModel.imageMaskViewColor = self.imageMaskViewColor;
                 cellModel.imageMaskViewFrame = self.imageMaskViewFrame;
+                cellModel.isShowImageCornerRadius = self.isShowImageCornerRadius;
+                cellModel.isShowimageBorder = self.isShowimageBorder;
+                cellModel.imageCornerRadius = self.imageCornerRadius;
+                cellModel.imageBorderWidth = self.imageBorderWidth;
+                cellModel.imageBorderColor = self.imageBorderColor;
                 [self.loopDataModels addObject:cellModel];
             }
             [self setLoopData];
@@ -315,6 +326,11 @@ NSInteger const allCount = 10000;//不能是奇数
                     cellModel.isShowImageMaskView = self.isShowImageMaskView;
                     cellModel.imageMaskViewColor = self.imageMaskViewColor;
                     cellModel.imageMaskViewFrame = self.imageMaskViewFrame;
+                    cellModel.isShowImageCornerRadius = self.isShowImageCornerRadius;
+                    cellModel.isShowimageBorder = self.isShowimageBorder;
+                    cellModel.imageCornerRadius = self.imageCornerRadius;
+                    cellModel.imageBorderWidth = self.imageBorderWidth;
+                    cellModel.imageBorderColor = self.imageBorderColor;
                 }
             }
             [self setLoopData];
@@ -525,6 +541,12 @@ NSInteger const allCount = 10000;//不能是奇数
         //如果图片小于1张,则不可滑动
         self.collectionView.scrollEnabled = NO;
     }
+}
+
+- (void)setLoopViewBackgroundColor:(UIColor *)loopViewBackgroundColor {
+    
+    _loopViewBackgroundColor = loopViewBackgroundColor;
+    self.collectionView.backgroundColor = loopViewBackgroundColor;
 }
 
 - (void)dealloc {
