@@ -16,7 +16,7 @@ static NSMutableDictionary *_timersDict;
 dispatch_semaphore_t _timeSemaphore;
 
 + (void)initialize {
-
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -44,7 +44,7 @@ dispatch_semaphore_t _timeSemaphore;
     dispatch_semaphore_wait(_timeSemaphore, DISPATCH_TIME_FOREVER);
     
     //设置定时器的唯一标识
-    NSString *timerName = [NSString stringWithFormat:@"timerName_%zd",_timersDict.count];
+    NSString *timerName = [NSString stringWithFormat:@"timerName_%zd_%@",_timersDict.count,[self getCurrentTimeStampString]];
     //存储到字典中
     [_timersDict setObject:timer forKey:timerName];
     
@@ -106,7 +106,7 @@ dispatch_semaphore_t _timeSemaphore;
         //从字典中移除
         [_timersDict removeObjectForKey:name];
     }
-
+    
     /****************************解锁******************************/
     dispatch_semaphore_signal(_timeSemaphore);
 }
@@ -117,10 +117,18 @@ dispatch_semaphore_t _timeSemaphore;
         
         return NO;
     }
-
+    
     BOOL run = [_timersDict.allKeys containsObject:name];
     
     return run;
+}
+
++ (NSNumber *)getCurrentTimeStampString {
+    
+    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];//获取当前时间0秒后的时间
+    NSTimeInterval time = [date timeIntervalSince1970]*1000;// *1000 是精确到毫秒，不乘就是精确到秒
+    NSNumber *timeNum = [NSNumber numberWithInteger:time];
+    return timeNum;
 }
 
 @end
