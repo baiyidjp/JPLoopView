@@ -7,7 +7,7 @@
 //
 
 #import "LoopViewController.h"
-#import "JPLoopView/JPLoopView.h"
+#import "JPLoopView.h"
 
 @interface LoopViewController ()<JPLoopViewDelegate>
 /** loopView; */
