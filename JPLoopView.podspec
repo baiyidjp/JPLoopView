@@ -3,8 +3,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "JPLoopView"
-  s.version      = "1.0.1"
-  s.summary      = "loop view."
+  s.version      = "1.0.2"
+  s.summary      = "Loop view."
   s.homepage     = "https://github.com/baiyidjp/JPLoopView"
   s.license      = "MIT"
   s.author             =  "baiyi"

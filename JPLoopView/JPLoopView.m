@@ -21,6 +21,8 @@ NSInteger const allCount = 10000;//不能是奇数
 
 /** models */
 @property(nonatomic,strong) NSMutableArray *loopDataModels;
+/** collectionViewLayout */
+@property(nonatomic,strong) JPLoopViewLayout *collectionViewLayout;
 /** collectionview */
 @property(nonatomic,strong) UICollectionView *collectionView;
 /** pagecontrol 分页控件 */
@@ -131,7 +133,8 @@ NSInteger const allCount = 10000;//不能是奇数
 #pragma mark -设置UI
 - (void)p_ConfigView {
     
-    self.collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:[[JPLoopViewLayout alloc]init]];
+    self.collectionViewLayout = [[JPLoopViewLayout alloc]init];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:self.bounds collectionViewLayout:self.collectionViewLayout];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView registerClass:[JPLoopViewCell class] forCellWithReuseIdentifier:JPCollectionViewCellID];
@@ -369,8 +372,7 @@ NSInteger const allCount = 10000;//不能是奇数
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.loopDataModels.count && self.infiniteLoop) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.totalItemsCount/2 inSection:0];
-            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+            [self p_LoopViewScrollToIndexPath:[NSIndexPath indexPathForItem:self.totalItemsCount/2 inSection:0] animated:NO];
         }
     });
 }
@@ -483,21 +485,22 @@ NSInteger const allCount = 10000;//不能是奇数
 }
 - (void)p_ScrollLoopView {
     
-    NSInteger currentIndex = [self p_CurrentIndex];
-    [self p_LoopViewScrollToIndex:currentIndex+1];
+    NSInteger nextIndex = [self p_CurrentIndex] + 1;
+    if (nextIndex >= self.totalItemsCount) {
+        nextIndex = self.totalItemsCount * 0.5;
+        [self p_LoopViewScrollToIndexPath:[NSIndexPath indexPathForItem:nextIndex inSection:0] animated:NO];
+    } else {
+        [self p_LoopViewScrollToIndexPath:[NSIndexPath indexPathForItem:nextIndex inSection:0] animated:YES];
+    }
 }
 
 //滚动collectionview
-- (void)p_LoopViewScrollToIndex:(NSInteger)currentIndex {
+- (void)p_LoopViewScrollToIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated {
     
-    if (currentIndex >= self.totalItemsCount) {
-        if (self.infiniteLoop) {
-            currentIndex = self.totalItemsCount * 0.5;
-            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-        }
-        return;
-    }
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:currentIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    //获取位置
+   UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:indexPath];
+   // 滑动
+   [self.collectionView setContentOffset:layoutAttributes.frame.origin animated:animated];
 }
 
 
