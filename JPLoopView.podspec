@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "JPLoopView"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "Loop view."
   s.homepage     = "https://github.com/baiyidjp/JPLoopView"
   s.license      = "MIT"
@@ -13,5 +13,6 @@ Pod::Spec.new do |s|
   s.source_files  = "JPLoopView/*.{h,m}"
   s.requires_arc = true
   s.dependency "SDWebImage"
+  s.dependency 'JPUtils-OC/Timer'
 # pod trunk push --allow-warnings
 end

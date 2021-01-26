@@ -10,7 +10,7 @@
 #import "JPLoopViewLayout.h"
 #import "JPLoopViewCell.h"
 #import "JPPageControl.h"
-#import "JPTimerManager.h"
+#import "JPTimerUtils.h"
 #import "JPProxy.h"
 
 NSString *const JPCollectionViewCellID = @"JPCollectionViewCellID";
@@ -481,7 +481,7 @@ NSInteger const allCount = 10000;//不能是奇数
         return;
     }
     
-    self.timerManageName = [JPTimerManager timerBeginWithStartTime:self.intervalTime intervalTime:self.intervalTime repeats:YES async:NO target:[[JPProxy alloc] initWithTarget:self] selector:@selector(p_ScrollLoopView)];
+    self.timerManageName = [JPTimerUtils jp_timerBeginWithStartTime:self.intervalTime intervalTime:self.intervalTime repeats:YES async:NO target:[[JPProxy alloc] initWithTarget:self] selector:@selector(p_ScrollLoopView)];
 }
 - (void)p_ScrollLoopView {
     
@@ -508,7 +508,7 @@ NSInteger const allCount = 10000;//不能是奇数
 - (void)stopTimer {
     
     if (self.timerManageName) {
-        [JPTimerManager cancelTask:self.timerManageName];
+        [JPTimerUtils jp_cancelTask:self.timerManageName];
         self.timerManageName = nil;
     }
 }

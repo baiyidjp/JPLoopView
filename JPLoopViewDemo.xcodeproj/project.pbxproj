@@ -12,7 +12,6 @@
 		B8C6F1262551541800ADE702 /* JPLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C6F1182551541800ADE702 /* JPLoopView.m */; };
 		B8C6F1272551541800ADE702 /* JPPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C6F11C2551541800ADE702 /* JPPageControl.m */; };
 		B8C6F1282551541800ADE702 /* JPProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C6F1202551541800ADE702 /* JPProxy.m */; };
-		B8C6F1292551541800ADE702 /* JPTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C6F1212551541800ADE702 /* JPTimerManager.m */; };
 		B8C6F12A2551541800ADE702 /* JPLoopViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C6F1222551541800ADE702 /* JPLoopViewLayout.m */; };
 		B8C6F12B2551541800ADE702 /* JPLoopCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C6F1232551541800ADE702 /* JPLoopCellModel.m */; };
 		F5460DC6215097C1000B9C96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5460DC5215097C1000B9C96 /* AppDelegate.m */; };
@@ -28,7 +27,6 @@
 		8313F02AF2AE1AB0BDBA2A83 /* Pods-JPLoopViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPLoopViewDemo.debug.xcconfig"; path = "Target Support Files/Pods-JPLoopViewDemo/Pods-JPLoopViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		B8C6F1172551541800ADE702 /* JPLoopViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopViewCell.m; sourceTree = "<group>"; };
 		B8C6F1182551541800ADE702 /* JPLoopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopView.m; sourceTree = "<group>"; };
-		B8C6F1192551541800ADE702 /* JPTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPTimerManager.h; sourceTree = "<group>"; };
 		B8C6F11A2551541800ADE702 /* JPProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPProxy.h; sourceTree = "<group>"; };
 		B8C6F11B2551541800ADE702 /* JPLoopViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopViewLayout.h; sourceTree = "<group>"; };
 		B8C6F11C2551541800ADE702 /* JPPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPPageControl.m; sourceTree = "<group>"; };
@@ -36,7 +34,6 @@
 		B8C6F11E2551541800ADE702 /* JPLoopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopView.h; sourceTree = "<group>"; };
 		B8C6F11F2551541800ADE702 /* JPLoopViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPLoopViewCell.h; sourceTree = "<group>"; };
 		B8C6F1202551541800ADE702 /* JPProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPProxy.m; sourceTree = "<group>"; };
-		B8C6F1212551541800ADE702 /* JPTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPTimerManager.m; sourceTree = "<group>"; };
 		B8C6F1222551541800ADE702 /* JPLoopViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopViewLayout.m; sourceTree = "<group>"; };
 		B8C6F1232551541800ADE702 /* JPLoopCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPLoopCellModel.m; sourceTree = "<group>"; };
 		B8C6F1242551541800ADE702 /* JPPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPPageControl.h; sourceTree = "<group>"; };
@@ -90,7 +87,6 @@
 			children = (
 				B8C6F1172551541800ADE702 /* JPLoopViewCell.m */,
 				B8C6F1182551541800ADE702 /* JPLoopView.m */,
-				B8C6F1192551541800ADE702 /* JPTimerManager.h */,
 				B8C6F11A2551541800ADE702 /* JPProxy.h */,
 				B8C6F11B2551541800ADE702 /* JPLoopViewLayout.h */,
 				B8C6F11C2551541800ADE702 /* JPPageControl.m */,
@@ -98,7 +94,6 @@
 				B8C6F11E2551541800ADE702 /* JPLoopView.h */,
 				B8C6F11F2551541800ADE702 /* JPLoopViewCell.h */,
 				B8C6F1202551541800ADE702 /* JPProxy.m */,
-				B8C6F1212551541800ADE702 /* JPTimerManager.m */,
 				B8C6F1222551541800ADE702 /* JPLoopViewLayout.m */,
 				B8C6F1232551541800ADE702 /* JPLoopCellModel.m */,
 				B8C6F1242551541800ADE702 /* JPPageControl.h */,
@@ -246,7 +241,6 @@
 				B8C6F12B2551541800ADE702 /* JPLoopCellModel.m in Sources */,
 				B8C6F12A2551541800ADE702 /* JPLoopViewLayout.m in Sources */,
 				F5460DC9215097C2000B9C96 /* ViewController.m in Sources */,
-				B8C6F1292551541800ADE702 /* JPTimerManager.m in Sources */,
 				F5460DD4215097C3000B9C96 /* main.m in Sources */,
 				F5460DF8215098FF000B9C96 /* LoopViewController.m in Sources */,
 				F5460DC6215097C1000B9C96 /* AppDelegate.m in Sources */,
