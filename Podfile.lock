@@ -5,27 +5,18 @@ PODS:
   - SDWebImage/Core (5.0.1)
 
 DEPENDENCIES:
-  - JPUtils-OC/Timer (from `https://github.com/baiyidjp/JPUtils-OC.git`, tag `0.0.5`)
+  - JPUtils-OC/Timer (= 0.0.5)
   - SDWebImage
 
 SPEC REPOS:
   trunk:
+    - JPUtils-OC
     - SDWebImage
-
-EXTERNAL SOURCES:
-  JPUtils-OC:
-    :git: https://github.com/baiyidjp/JPUtils-OC.git
-    :tag: 0.0.5
-
-CHECKOUT OPTIONS:
-  JPUtils-OC:
-    :git: https://github.com/baiyidjp/JPUtils-OC.git
-    :tag: 0.0.5
 
 SPEC CHECKSUMS:
   JPUtils-OC: 0b9d0b91c48b1448e9517a082fe56302da50f527
   SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
 
-PODFILE CHECKSUM: 1c960fa216217a87aafb786b4ff5a3209395da1b
+PODFILE CHECKSUM: a13e260d052fe862b12ebe454ca0aedd5e20a6cc
 
 COCOAPODS: 1.10.0

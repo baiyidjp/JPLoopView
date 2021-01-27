@@ -8,6 +8,6 @@ target 'JPLoopViewDemo' do
   # Pods for JPLoopViewDemo
 
 pod 'SDWebImage'
-pod 'JPUtils-OC/Timer', :git => 'https://github.com/baiyidjp/JPUtils-OC.git', :tag => '0.0.5'
+pod 'JPUtils-OC/Timer', '0.0.5'
 
 end
